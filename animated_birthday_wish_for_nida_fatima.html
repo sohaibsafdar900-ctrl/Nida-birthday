@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Nida Fatima 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px 50px;
+      border-radius: 20px;
+      text-align: center;
+      color: #fff;
+      max-width: 550px;
+      animation: fadeIn 2s ease-in-out;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 10px;
+      animation: glow 2.5s infinite alternate;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .message {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      animation: slideUp 2s ease-out;
+    }
+
+    .countdown {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      font-weight: 500;
+      animation: softGlow 3s infinite alternate;
+    }
+
+    .date {
+      display: block;
+      margin-bottom: 18px;
+      opacity: 0.85;
+      font-size: 0.95rem;
+    }
+
+    .glow-text {
+      display: block;
+      margin-top: 18px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #fff;
+      animation: heartGlow 2.5s infinite alternate;
+    }
+
+    .message span {
+      display: block;
+      margin-top: 15px;
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff; }
+      to { text-shadow: 0 0 25px #ffebf7; }
+    }
+
+    @keyframes softGlow {
+      from { text-shadow: 0 0 8px rgba(255,255,255,0.6); }
+      to { text-shadow: 0 0 20px rgba(255,255,255,0.9); }
+    }
+
+    @keyframes heartGlow {
+      from { text-shadow: 0 0 10px #ffd1dc; }
+      to { text-shadow: 0 0 30px #fff; }
+    }
+      to { text-shadow: 0 0 25px #ffebf7; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Balloons */
+    .balloon {
+      position: absolute;
+      bottom: -120px;
+      width: 45px;
+      height: 65px;
+      border-radius: 50%;
+      animation: float 9s infinite ease-in;
+      opacity: 0.85;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 45px;
+      background: rgba(255,255,255,0.7);
+      top: 65px;
+      left: 50%;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-120vh); }
+    }
+
+    .b1 { left: 15%; background: #ff9a9e; animation-delay: 0s; }
+    .b2 { left: 35%; background: #fad0c4; animation-delay: 2s; }
+    .b3 { left: 55%; background: #a1c4fd; animation-delay: 4s; }
+    .b4 { left: 75%; background: #c2e9fb; animation-delay: 1s; }
+
+    /* Confetti */
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+
+  <div class="container">
+    <h1>Happy Birthday 🎂</h1>
+    <h2>Nida Fatima ✨</h2>
+
+    <div class="message">
+      <span class="countdown">✨ Happy 7 months left ✨</span>
+      <span class="date">until 18 July 2025 🎂</span>
+
+      Thank you for being there for me, always.
+      <span>Thank you for the laughs, the support, and the memories.</span>
+      <span class="glow-text">Thanks for being my Nida Ge 🥹💖</span>
+      <span>Thanks for everything — you truly make life more beautiful.</span>
+      <span>May this year bring you peace, love, and endless happiness 🌸</span>
+    </div>
+  </div>
+
+  <!-- Balloons -->
+  <div class="balloon b1"></div>
+  <div class="balloon b2"></div>
+  <div class="balloon b3"></div>
+  <div class="balloon b4"></div>
+
+  <script>
+    // Confetti Animation
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const confettiPieces = [];
+    const colors = ['#ff9a9e', '#fad0c4', '#a1c4fd', '#c2e9fb'];
+
+    for (let i = 0; i < 160; i++) {
+      confettiPieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 5 + 2,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        speed: Math.random() * 2 + 0.8
+      });
+    }
+
+    function drawConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confettiPieces.forEach(p => {
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x, p.y, p.size, p.size);
+        p.y += p.speed;
+        if (p.y > canvas.height) p.y = 0;
+      });
+      requestAnimationFrame(drawConfetti);
+    }
+
+    drawConfetti();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
